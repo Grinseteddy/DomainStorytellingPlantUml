@@ -1,0 +1,58 @@
+@startuml
+
+'Standard import
+!include <DomainStory/domainStory>
+
+skinparam linetype polyline
+
+'up to date version
+'!include https://raw.githubusercontent.com/johthor/DomainStory-PlantUML/main/domainStory.puml
+
+Boundary(Working) {
+    Document(Document)
+    Email(Email)
+    Conversation(Conversation)
+    Call(Call)
+    Info(Info)
+    Folder(Folder)
+}
+
+Boundary(Actors) {
+    Group(Group)
+    Person(Person)
+    System(System)
+}
+
+Boundary(Example) {
+    Person(Alice)
+    Conversation(Weather)
+    Person(Bob)
+}
+
+activity(1,Alice,talks about,Weather,with, Bob)
+
+'https://domainstorytelling.org/
+'https://www.amazon.de/Domain-Storytelling-Collaborative-Domain-Driven-Addison-Wesley/dp/0137458916
+
+Boundary("Domain-Storytelling") {
+     Person(BusinessExpert)
+     Person(Moderator)
+     Group(Audience)
+     Document(Story)
+     Info(Questions)
+
+     activity(1, BusinessExpert, tells, Story)
+     activity(2, Moderator, draws, Story)
+     activity(3, Audience, asks, Questions, about, Story)
+}
+
+'layout
+Working -down[hidden]-> Actors
+Actors -down[hidden]-> Example
+
+BusinessExpert -down[hidden]-> Moderator
+Moderator -down[hidden]- Audience
+
+Example -down[hidden]- "Domain-Storytelling"
+
+@enduml
