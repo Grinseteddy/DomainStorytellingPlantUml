@@ -1,0 +1,18 @@
+@startuml
+
+'Standard import
+!include <DomainStory/domainStory>
+
+Boundary("Domain-Storytelling") {
+     Person(BusinessExpert)
+     Person(Moderator)
+     Group(Audience)
+     Document(Story)
+     Info(Questions)
+
+     activity(1, BusinessExpert, tells, Story)
+     activity(2, Moderator, draws, Story)
+     activity(3, Audience, asks, Questions, about, Story)
+}
+
+@enduml

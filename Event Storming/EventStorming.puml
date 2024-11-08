@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+hide stereotype
+
+skinparam rectangle {
+    bordercolor white
+    backgroundcolor<<Event>> #FF9E4A
+    backgroundcolor<<Command>> #6ED7F8
+    backgroundcolor<<Process>> #FFD4E4
+    backgroundcolor<<User>> #F6D745
+    backgroundcolor<<View>> #D5F693
+    backgroundcolor<<Aggregate>> #FFF9B2
+    backgroundcolor<<Invariant>> #C9A6D4
+
+    bordercolor<<BoundedContext>> #007286
+    fontcolor<<BoundedContext>> #007286
+
+    fontsize<<Event>> 14
+    fontsize<<Command>> 10
+    fontsize<<Process>> 10
+    fontsize<<User>> 10
+    fontsize<<View>> 10
+    fontsize<<Aggregate>> 10
+}
+
+rectangle "Bounded Context" as boundedContext <<BoundedContext>> {
+
+    rectangle "Event" as event <<Event>>
+    rectangle "Command" as command <<Command>>
+    rectangle "Process" as process <<Process>>
+    rectangle "User" as user <<User>>
+    rectangle "View" as view <<View>>
+    rectangle "Aggregate" as aggregate <<Aggregate>>
+    rectangle "Invariant" as invariant <<Invariant>>
+
+'layout
+    event -down[hidden]- command
+    event -down[hidden]- process
+    event -down[hidden]- user
+    event -up[hidden]- view
+    event -up[hidden]- aggregate
+    aggregate -left[hidden]- view
+    invariant -down[hidden]- aggregate
+}
+
+
+
+
+
+
+@enduml
